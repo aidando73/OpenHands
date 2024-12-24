@@ -26,11 +26,12 @@ make run
 
 screen -S swe_bench
 # ./evaluation/benchmarks/swe_bench/scripts/run_infer.sh [model_config] [git-version] [agent] [eval_limit] [max_iter] [num_workers] [dataset] [dataset_split]
-track ./evaluation/benchmarks/swe_bench/scripts/run_infer.sh llm.eval_test HEAD CodeActAgent 300 30 2 princeton-nlp/SWE-bench_Lite test
+track ./evaluation/benchmarks/swe_bench/scripts/run_infer.sh llm.eval_test HEAD CodeActAgent 300 30 1 princeton-nlp/SWE-bench_Lite test
 # At 20 workers we start hitting Anthropic rate limit
 # At 12 workers we start hitting Anthropic rate limit
 # At 6 workers we start hitting Anthropic rate limit
 # At 3 workers we start hitting Anthropic rate limit
+# At 2 workers we start hitting Anthropic rate limit
 
 
 
@@ -49,7 +50,11 @@ config.toml file:
 [llm]
 # IMPORTANT: add your API key here, and set the model to the one you want to evaluate
 model = "claude-3-5-sonnet-20241022"
-api_key = ""
 
 [llm.eval_test]
+api_key = ""
+num_retries = 8
+retry_min_wait = 60
+retry_max_wait = 120
+retry_multiplier = 1
 ```
