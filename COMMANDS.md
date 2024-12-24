@@ -24,7 +24,22 @@ make build
 
 make run
 
-./evaluation/benchmarks/swe_bench/scripts/run_infer.sh llm.eval_test
+screen -S swe_bench
+# ./evaluation/benchmarks/swe_bench/scripts/run_infer.sh [model_config] [git-version] [agent] [eval_limit] [max_iter] [num_workers] [dataset] [dataset_split]
+track ./evaluation/benchmarks/swe_bench/scripts/run_infer.sh llm.eval_test HEAD CodeActAgent 300 30 2 princeton-nlp/SWE-bench_Lite test
+# At 20 workers we start hitting Anthropic rate limit
+# At 12 workers we start hitting Anthropic rate limit
+# At 6 workers we start hitting Anthropic rate limit
+# At 3 workers we start hitting Anthropic rate limit
+
+
+
+screen -ls
+screen -r swe_bench
+# ctrl-a + d to detach from screen
+# ctrl-a + esc to scroll up
+
+htop
 ```
 
 
