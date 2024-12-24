@@ -11,6 +11,10 @@ node -v # should print `v22.12.0`
 # verifies the right npm version is in the environment
 npm -v # should print `10.9.0`
 sudo apt-get install build-essential
+# Sudoless docker (otherwise we run into errors)
+sudo usermod -aG docker $USER
+newgrp docker
+
 
 source ~/miniconda3/bin/activate && conda create --prefix ./env python=3.12
 
