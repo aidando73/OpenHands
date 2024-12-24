@@ -23,4 +23,18 @@ source ~/miniconda3/bin/activate && conda activate ./env
 make build
 
 make run
+
+./evaluation/benchmarks/swe_bench/scripts/run_infer.sh llm.eval_test
+```
+
+
+config.toml file:
+
+```toml
+[llm]
+# IMPORTANT: add your API key here, and set the model to the one you want to evaluate
+model = "claude-3-5-sonnet-20241022"
+api_key = ""
+
+[llm.eval_test]
 ```
