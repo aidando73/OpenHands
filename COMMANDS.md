@@ -92,5 +92,6 @@ cd evaluation/evaluation_outputs/outputs
 sudo apt-get install git-lfs
 git init .
 git remote add origin git@hf.co:datasets/aidando73/open-hands-swe-bench-evals
+git pull
 git checkout main
 ```
