@@ -67,7 +67,7 @@ retry_max_wait = 120
 retry_multiplier = 1
 
 [llm.llama3_1_405B]
-model = "llama-3.1-405b"
+model = "openrouter/meta-llama/llama-3.1-405b-instruct"
 api_key = ""
-
+custom_llm_provider = "openrouter"
 ```
