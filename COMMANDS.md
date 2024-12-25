@@ -90,6 +90,7 @@ track ./evaluation/benchmarks/swe_bench/scripts/run_infer.sh llm.llama3_3_70B HE
 
 cd evaluation/evaluation_outputs/outputs
 sudo apt-get install git-lfs
+git init .
 git remote add origin git@hf.co:datasets/aidando73/open-hands-swe-bench-evals
 git checkout main
 ```
