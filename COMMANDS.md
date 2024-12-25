@@ -75,4 +75,8 @@ watch -c df -h
 # Ensure there's a .envrc file that sets the OPENROUTER_API_KEY
 sudo apt install jq
 watch -n 10 -c "curl -s -H \"Authorization: Bearer $OPENROUTER_API_KEY\" https://openrouter.ai/api/v1/auth/key | jq"
+
+
+# Running evaluation:
+./evaluation/benchmarks/swe_bench/scripts/eval_infer.sh evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/llama-3.1-405b-instruct_maxiter_30_N_v0.16.1-no-hint-run_1/output.jsonl
 ```
