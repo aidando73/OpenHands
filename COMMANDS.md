@@ -45,19 +45,16 @@ screen -r swe_bench
 
 
 # Llama 405B
-# Costs about ~$60 to run the full evaluation
+# Costs about ~$100 usd to run the full evaluation
 screen -S swe_bench
 track ./evaluation/benchmarks/swe_bench/scripts/run_infer.sh llm.llama3_1_405B HEAD CodeActAgent 300 30 12 princeton-nlp/SWE-bench_Lite test
 
-
-# If you run out of space
-docker system prune
-
-# Not helpful no
 # Clear containers
 docker rm -vf $(docker ps -aq)
 # Clear images
 docker rmi -f $(docker images -aq)
+# Clear everything
+docker system prune
 
 htop
 
