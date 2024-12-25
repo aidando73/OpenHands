@@ -39,7 +39,7 @@ track ./evaluation/benchmarks/swe_bench/scripts/run_infer.sh llm.eval_test HEAD 
 # At 3 workers we start hitting Anthropic rate limit
 # At 2 workers we start hitting Anthropic rate limit
 
-
+echo "export OPENROUTER_API_KEY=" > .envrc
 
 screen -ls
 screen -r swe_bench
