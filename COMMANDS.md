@@ -65,9 +65,10 @@ docker system prune
 htop
 
 # Check how many tests have been completed
+# 3.1 405B watch
 watch -c wc -l evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/llama-3.1-405b-instruct_maxiter_30_N_v0.16.1-no-hint-run_1/output.jsonl
-
-watch -c df -h
+# 3.3 70B watch
+watch -c wc -l evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/llama-3.3-70b-instruct_maxiter_30_N_v0.16.1-no-hint-run_1/output.jsonl
 
 
 # Set the api key
