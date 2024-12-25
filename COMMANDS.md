@@ -68,7 +68,8 @@ watch -c df -h
 
 # Make a curl request with a bearer auth token from env OPENROUTER_API_KEY
 # Ensure there's a .envrc file that sets the OPENROUTER_API_KEY
-sudo apt install jq | curl -H "Authorization: Bearer $OPENROUTER_API_KEY" https://openrouter.ai/api/v1/auth/key
+sudo apt install jq
+watch -n 10 -c "curl -s -H \"Authorization: Bearer $OPENROUTER_API_KEY\" https://openrouter.ai/api/v1/auth/key | jq"
 ```
 
 
