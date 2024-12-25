@@ -86,4 +86,10 @@ watch -n 10 -c "curl -s -H \"Authorization: Bearer $OPENROUTER_API_KEY\" https:/
 
 # 3.3 70B
 track ./evaluation/benchmarks/swe_bench/scripts/run_infer.sh llm.llama3_3_70B HEAD CodeActAgent 300 30 12 princeton-nlp/SWE-bench_Lite test
+
+
+cd evaluation/evaluation_outputs/outputs
+sudo apt-get install git-lfs
+git remote add origin git@hf.co:datasets/aidando73/open-hands-swe-bench-evals
+git checkout main
 ```
