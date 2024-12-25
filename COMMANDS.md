@@ -1,5 +1,9 @@
 ```bash
 # New Lambda VM setup
+git clone git@github.com:aidando73/OpenHands.git
+
+git checkout aidand-open-hands
+
 curl -sSL https://install.python-poetry.org | python3 -
 # installs nvm (Node Version Manager)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
@@ -8,7 +12,6 @@ source ~/.bashrc
 nvm install 22
 # verifies the right Node.js version is in the environment
 node -v # should print `v22.12.0`
-# verifies the right npm version is in the environment
 npm -v # should print `10.9.0`
 sudo apt-get install build-essential
 # Sudoless docker (otherwise we run into errors)
@@ -41,6 +44,11 @@ screen -r swe_bench
 # ctrl-a + esc to scroll up
 
 htop
+
+# Llama 405B
+screen -S swe_bench
+track ./evaluation/benchmarks/swe_bench/scripts/run_infer.sh llm.llama3_1_405B HEAD CodeActAgent 300 30 12 princeton-nlp/SWE-bench_Lite test
+
 ```
 
 
@@ -49,12 +57,17 @@ config.toml file:
 ```toml
 [llm]
 # IMPORTANT: add your API key here, and set the model to the one you want to evaluate
-model = "claude-3-5-sonnet-20241022"
 
-[llm.eval_test]
+[llm.claude]
+model = "claude-3-5-sonnet-20241022"
 api_key = ""
 num_retries = 8
 retry_min_wait = 60
 retry_max_wait = 120
 retry_multiplier = 1
+
+[llm.llama3_1_405B]
+model = "llama-3.1-405b"
+api_key = ""
+
 ```
