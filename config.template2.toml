@@ -1,0 +1,15 @@
+[llm]
+# IMPORTANT: add your API key here, and set the model to the one you want to evaluate
+
+[llm.claude]
+model = "claude-3-5-sonnet-20241022"
+api_key = ""
+num_retries = 8
+retry_min_wait = 60
+retry_max_wait = 120
+retry_multiplier = 1
+
+[llm.llama3_1_405B]
+model = "openrouter/meta-llama/llama-3.1-405b-instruct"
+api_key = ""
+custom_llm_provider = "openrouter"
