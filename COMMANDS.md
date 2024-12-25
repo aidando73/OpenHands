@@ -39,8 +39,6 @@ track ./evaluation/benchmarks/swe_bench/scripts/run_infer.sh llm.eval_test HEAD 
 # At 3 workers we start hitting Anthropic rate limit
 # At 2 workers we start hitting Anthropic rate limit
 
-# Set the api key
-echo "export OPENROUTER_API_KEY=" > .envrc
 
 screen -ls
 screen -r swe_bench
@@ -71,6 +69,10 @@ watch -c wc -l evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Li
 
 watch -c df -h
 
+
+# Set the api key
+echo "export OPENROUTER_API_KEY=" > .envrc
+
 # Make a curl request with a bearer auth token from env OPENROUTER_API_KEY
 # Ensure there's a .envrc file that sets the OPENROUTER_API_KEY
 sudo apt install jq
@@ -79,4 +81,8 @@ watch -n 10 -c "curl -s -H \"Authorization: Bearer $OPENROUTER_API_KEY\" https:/
 
 # Running evaluation:
 ./evaluation/benchmarks/swe_bench/scripts/eval_infer.sh evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/llama-3.1-405b-instruct_maxiter_30_N_v0.16.1-no-hint-run_1/output.jsonl
+
+
+# 3.3 70B
+track ./evaluation/benchmarks/swe_bench/scripts/run_infer.sh llm.llama3_3_70B HEAD CodeActAgent 300 30 12 princeton-nlp/SWE-bench_Lite test
 ```
