@@ -59,6 +59,9 @@ docker system prune
 docker rm -vf $(docker ps -aq)
 # Clear images
 docker rmi -f $(docker images -aq)
+
+# Check how many tests have been completed
+watch -c wc -l evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/llama-3.1-405b-instruct_maxiter_30_N_v0.16.1-no-hint-run_1/output.jsonl
 ```
 
 
