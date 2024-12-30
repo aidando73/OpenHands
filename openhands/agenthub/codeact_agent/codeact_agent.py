@@ -82,6 +82,7 @@ class CodeActAgent(Agent):
         Parameters:
         - llm (LLM): The llm to be used by this agent
         """
+        self.prompt_counter = 0
         super().__init__(llm, config)
         self.reset()
 
@@ -369,10 +370,17 @@ class CodeActAgent(Agent):
         params: dict = {
             'messages': self.llm.format_messages_for_llm(messages),
         }
+        # print(f'params: {json.dumps(params, indent=2)}')
+
+        with open(f'logs/params_{self.prompt_counter}.json', 'w') as f:
+            f.write(json.dumps(params, indent=2))
         params['tools'] = self.tools
         if self.mock_function_calling:
             params['mock_function_calling'] = True
         response = self.llm.completion(**params)
+        with open(f'logs/response_{self.prompt_counter}.json', 'w') as f:
+            f.write(response.model_dump_json(indent=2))
+        self.prompt_counter += 1
         actions = codeact_function_calling.response_to_actions(response)
         for action in actions:
             self.pending_actions.append(action)
